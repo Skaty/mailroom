@@ -1,1 +1,1 @@
-from .mailroom import app
+from .mailroom import app, db

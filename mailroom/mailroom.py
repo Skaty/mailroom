@@ -13,3 +13,7 @@ app.config.from_json('mailroom.cfg', silent=True)
 
 # Load database
 db = SQLAlchemy(app)
+
+from mailroom.mod_api.controllers import mod_api
+
+app.register_blueprint(mod_api)
