@@ -16,4 +16,8 @@ db = SQLAlchemy(app)
 
 from mailroom.mod_api.controllers import mod_api
 
+# Register modules
 app.register_blueprint(mod_api)
+
+# SQLAlchemy init
+db.create_all()
