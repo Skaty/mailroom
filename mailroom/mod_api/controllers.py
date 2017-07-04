@@ -1,6 +1,6 @@
 from flask import Blueprint, request, jsonify
 
-from .models import Mailbox
+from .models import Mailbox, Mailgroup
 
 keys = {}
 
@@ -14,9 +14,8 @@ def record_keys(setup_state):
 
 @mod_api.route('/mailboxes', methods=['GET'])
 def list_mailboxes():
-    return_fields = ['id', 'name']
-    response = [x.as_dict(return_fields) for x in Mailbox.query.all()]
-    return jsonify(response)
+    groups = Mailgroup.query.all()
+    return jsonify([group.serialize for group in groups])
 
 @mod_api.route('/send', methods=['GET','POST'])
 def send_message():
