@@ -9,3 +9,9 @@ class Base(db.Model):
     def serialize(self):
         """Serializes the Model data instance"""
         return {c.name: getattr(self, c.name) for c in self.__table__.columns}
+
+    def serialize_some(self, columns = None):
+        """Serializes only columns that are specified in the columns argument"""
+        if columns is None:
+            columns = [c.name for c in self.__table__.columns]
+        return {c: getattr(self, c) for c in columns if c in self.__table__.columns}
