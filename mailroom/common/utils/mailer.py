@@ -1,11 +1,14 @@
 from smtplib import SMTP_SSL
 from email.message import EmailMessage
 
+from .decorators import suppress_exceptions
+
 """
 Mailer functions - for sending out
 messages to the respective mailboxes
 """
 
+@suppress_exceptions(False)
 def send_mail(smtp_credentials, recipient, subject, message):
     """
     Sends the message via the designated SMTP server
