@@ -9,7 +9,7 @@ SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(app.instance_path, 'app.db
 SQLALCHEMY_TRACK_MODIFICATIONS = False
 
 SECRETS = {
-    'recaptcha': '',
+    'recaptcha': '6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe',
     'mailer': {
         'host': '',
         'username': '',
