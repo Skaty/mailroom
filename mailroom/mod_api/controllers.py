@@ -2,15 +2,15 @@ from flask import Blueprint, request, jsonify
 
 from .models import Mailbox, Mailgroup
 
-keys = {}
+SECRETS = {}
 
 mod_api = Blueprint('main', __name__, url_prefix='/api')
 
 @mod_api.record_once
 def record_keys(setup_state):
-    global keys
+    global SECRETS
     app = setup_state.app
-    keys = app.config.get('KEYS', {})
+    SECRETS = app.config.get('SECRETS', {})
 
 @mod_api.route('/mailboxes', methods=['GET'])
 def list_mailboxes():
